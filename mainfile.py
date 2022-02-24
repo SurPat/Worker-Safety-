@@ -2,7 +2,6 @@ import threading
 import cv2
 import cam1, cam2
 
-from social_distance import cam2
 from threading import *
 
 def camra1():
