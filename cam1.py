@@ -4,13 +4,12 @@ import numpy as np
 import cv2;
 import glob
 import time;
-import psutil
 import os
 
 
 # from firebase import firebase
 
-def cam1(number):
+def cam1():
     # # Define the max/min safe distance limits (in pixels) between 2 people.
     MAX_DISTANCE = 170  # 50 #80
     MIN_DISTANCE = 70  # 25 #50
@@ -38,11 +37,10 @@ def cam1(number):
 
     global fname
     global vidpath
-    #      cap = cv2.VideoCapture(0)
     FPS = cap.get(cv2.CAP_PROP_FPS)
     print(FPS)
     ########################
-    out_vid = cv2.VideoWriter("cam{0}_result.avi".format(number), cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), FPS,
+    out_vid = cv2.VideoWriter("cam{0}_result.avi".format(1), cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), FPS,
                               (int(cap.get(3)), int(cap.get(4))))  ########################
     ########################
     font = cv2.FONT_HERSHEY_PLAIN
@@ -202,7 +200,7 @@ def cam1(number):
             if key == ord('q'):
                 break
         except:
-            break
+            print("No capturing from cam1..")
     # videocreate(vidpath, fname)
     cap.release()
     # writer.release()
@@ -210,4 +208,3 @@ def cam1(number):
 # firebase = firebase.FirebaseApplication('https://counting-people-dda5f.firebaseio.com/')
 # result = firebase.put('/counting-people-dda5f','people',boxes_count)
 # print(result)
-
